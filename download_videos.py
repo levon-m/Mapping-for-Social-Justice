@@ -8,6 +8,7 @@ def scrape_videos(article_url):
     response = requests.get(article_url)
     soup = BeautifulSoup(response.text, 'html.parser')
     videos = soup.find_all('video')
+    #Find other tags/links to identify videos
     video_urls = [video.find('source')['src'] for video in videos if video.find('source')]
     return video_urls
 
